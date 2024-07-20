@@ -91,6 +91,51 @@ Add a column that is the difference between purchase_time and visit_time.
 
 ```
 
+--- 
+# Full Code
+```python
+import codecademylib3
+#Step 1 
+import pandas as pd
+visits = pd.read_csv('visits.csv',parse_dates=[1])
+cart = pd.read_csv('cart.csv',parse_dates=[1])
+checkout = pd.read_csv('checkout.csv',parse_dates=[1])
+purchase = pd.read_csv('purchase.csv',parse_dates=[1])
+#Step 2
+table1 =pd.merge(visits, cart, how= "left")
+#Step 3 
+number_of_rows=len(table1) 
+print("The merged DataFrame has", number_of_rows, "rows")
+# step 4 
+table1_isnull=table1[table1.cart_time.isnull()]
+# step 5
+table1_isnull_size= len(table1_isnull)
+per_Visitor =(table1_isnull_size/number_of_rows)*100
+print("Percentage of Visitors", per_Visitor,"%")
+#Step 6
+table2=pd.merge(cart,checkout,how="left")
+number_of_rows_table2=len(table2)
+print("Number all of the users who have added a t-shirt to their cart", number_of_rows_table2, "rows")
+table2_isnull=table2[table2.checkout_time.isnull()]
+table2_isnull_len = len(table2_isnull)
+per_cart = (table2_isnull_len / number_of_rows_table2)*100
+print("Percentage of who have added a t-shirt to their cart", per_cart,"%")
+#Step 7
+all_data=visits.merge(cart,how="left").merge(checkout,how="left").merge(purchase,how="left")
+print("Merge table of all data ",all_data.head(10),"and lenght of all is",len(all_data))
+#Step 8
+table3=pd.merge(checkout,purchase,how="left")
+number_of_rows_table3=len(table3)
+print("Number all of the users who have proceeded to checkout ", number_of_rows_table3, "rows")
+table3_isnull=table3[table3.purchase_time.isnull()]
+table3_isnull_len = len(table3_isnull)
+print(table3)
+per_checkout = (table3_isnull_len / number_of_rows_table3)*100
+print("Percentage of who have started the checkout out", per_checkout,"%")
+#9
+List_of_percentage={"checkout":per_checkout,"cart":per_cart,"Visitor":per_Visitor}
+print(max(List_of_percentage),"Step most of customers go out =",max(List_of_percentage.values()))
+```
 
 
 
