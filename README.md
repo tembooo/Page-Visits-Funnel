@@ -47,6 +47,28 @@ per_Visitor =(table1_isnull_size/number_of_rows)*100
 print("Percentage of Visitors", per_Visitor,"%")
 ```
 ## Step 6 : Repeat the left merge for `cart` and `checkout` and count null values. What percentage of users put items in their cart, but did not proceed to checkout?
+```python
+#step 6
+table2=pd.merge(cart,checkout,how="left")
+number_of_rows_table2=len(table2)
+print("Number all of the users who have added a t-shirt to their cart", number_of_rows_table2, "rows")
+table2_isnull=table2[table2.checkout_time.isnull()]
+table2_isnull_len = len(table2_isnull)
+per_cart = (table2_isnull_len / number_of_rows_table2)*100
+print("Percentage of Visitors", per_cart,"%")
+```
+## Step 7 :Merge all four steps of the funnel, in order, using a series of left merges. Save the results to the variable `all_data`.
+Examine the result using `print` and `head`.
+```python
+#Step 7
+all_data=visits.merge(cart,how="left").merge(checkout,how="left").merge(purchase,how="left")
+print("Merge table of all data ",all_data.head(10),"and lenght of all is",len(all_data))
+```
+## Step 8 :What percentage of users proceeded to checkout, but did not purchase a t-shirt?
+```Phyton
+
+```
+
 
 
 
