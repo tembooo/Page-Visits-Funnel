@@ -55,7 +55,7 @@ print("Number all of the users who have added a t-shirt to their cart", number_o
 table2_isnull=table2[table2.checkout_time.isnull()]
 table2_isnull_len = len(table2_isnull)
 per_cart = (table2_isnull_len / number_of_rows_table2)*100
-print("Percentage of Visitors", per_cart,"%")
+print("Percentage of who have added a t-shirt to their cart", per_cart,"%")
 ```
 ## Step 7 :Merge all four steps of the funnel, in order, using a series of left merges. Save the results to the variable `all_data`.
 Examine the result using `print` and `head`.
@@ -65,11 +65,31 @@ all_data=visits.merge(cart,how="left").merge(checkout,how="left").merge(purchase
 print("Merge table of all data ",all_data.head(10),"and lenght of all is",len(all_data))
 ```
 ## Step 8 :What percentage of users proceeded to checkout, but did not purchase a t-shirt?
-```Phyton
+```python
+#Step 8
+table3=pd.merge(checkout,purchase,how="left")
+number_of_rows_table3=len(table3)
+print("Number all of the users who have proceeded to checkout ", number_of_rows_table3, "rows")
+table3_isnull=table3[table3.purchase_time.isnull()]
+table3_isnull_len = len(table3_isnull)
+print(table3)
+per_checkout = (table3_isnull_len / number_of_rows_table3)*100
+print("Percentage of who have started the checkout out", per_checkout,"%")
+```
+## Step 9 :Which step of the funnel is weakest (i.e., has the highest percentage of users not completing it)?
+How might Cool T-Shirts Inc. change their website to fix this problem?
+```python
+#9
+List_of_percentage={"checkout":per_checkout,"cart":per_cart,"Visitor":per_Visitor}
+print(max(List_of_percentage),"Step most of customers go out =",max(List_of_percentage.values()))
+```
+# Average Time to Purchase
+We need to calculate times of purches. 
+## Step 10: Using the giant merged DataFrame all_data that you created, let’s calculate the average time from initial visit to final purchase. 
+Add a column that is the difference between purchase_time and visit_time.
+```python
 
 ```
-
-
 
 
 
