@@ -40,6 +40,15 @@ table1_isnull=table1[table1.cart_time.isnull()]
 ```
 ## Step 5 : What percent of users who visited Cool T-Shirts Inc. ended up not placing a t-shirt in their cart?
 *Note:* To calculate percentages, it will be helpful to turn either the numerator or the denominator into a float, by using float(), with the number to convert passed in as input. Otherwise, Python will use integer division, which truncates decimal points.
+```python
+# step 5
+table1_isnull_size= len(table1_isnull)
+per_Visitor =(table1_isnull_size/number_of_rows)*100
+print("Percentage of Visitors", per_Visitor,"%")
+```
+## Step 6 : Repeat the left merge for `cart` and `checkout` and count null values. What percentage of users put items in their cart, but did not proceed to checkout?
+
+
 
 
 
