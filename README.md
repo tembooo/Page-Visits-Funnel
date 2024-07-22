@@ -5,6 +5,7 @@ In this case, our funnel is going to describe the following process:<br/>
 2.A user adds a t-shirt to their cart <br/>
 3.A user clicks “checkout” <br/>
 4.A user actually purchases a t-shirt <br/> 
+<img title="Page-Visits-Funnel" src="https://imgurl.ir/uploads/j44525_Page-Visits-Funnel.png">
 `I use Code Academy lesson.` <br/>
 `Improve appereance with this link:` <a href="[https://bit.ly/2BNk3P1](https://github.com/noob-hackers/grabcam/edit/master/README.md)"> https://github.com/noob-hackers/grabcam/edit/master/README.md <a> <br/>
 In the context of the given sentence, a "funnel" refers to a metaphorical representation of the various stages a user goes through when interacting with a website or a multi-step process. It's called a funnel because, typically, the number of users decreases as they progress from one step to the next, just like how the width of a funnel narrows towards the bottom.<br/>
@@ -97,6 +98,11 @@ all_data['time_to_purchase'] = \
 ```python
 #11
 print(all_data.time_to_purchase)
+```
+## Step 12: Calculate the average time to purchase by applying the .mean() function to your new column.
+```python
+#12
+print(all_data.time_to_purchase.mean())
 ```
 --- 
 # Full Code
