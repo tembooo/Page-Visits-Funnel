@@ -88,9 +88,16 @@ We need to calculate times of purches.
 ## Step 10: Using the giant merged DataFrame all_data that you created, let’s calculate the average time from initial visit to final purchase. 
 Add a column that is the difference between purchase_time and visit_time.
 ```python
-
+#10
+all_data['time_to_purchase'] = \
+    all_data.purchase_time - \
+    all_data.visit_time
 ```
-
+## Step 11: Examine the results by printing the new column to the screen.
+```python
+#11
+print(all_data.time_to_purchase)
+```
 --- 
 # Full Code
 ```python
@@ -135,6 +142,14 @@ print("Percentage of who have started the checkout out", per_checkout,"%")
 #9
 List_of_percentage={"checkout":per_checkout,"cart":per_cart,"Visitor":per_Visitor}
 print(max(List_of_percentage),"Step most of customers go out =",max(List_of_percentage.values()))
+#10
+all_data['time_to_purchase'] = \
+    all_data.purchase_time - \
+    all_data.visit_time
+#11
+print(all_data.time_to_purchase)
+#12
+print(all_data.time_to_purchase.mean())
 ```
 
 
